@@ -11,14 +11,10 @@ const Tasks = () => {
             <p className={styles.purpleParagraph}> <span>0</span> Tarefas Concluidas</p>
         </header>
         <main>
+            <ClipboardText size={56}  className={styles.clipboard}/>
+            <p className={styles.firstParahraph}>Você ainda não tem tarefas cadastradas</p>
+            <p>Crie tarefas e organize seus itens a fazer</p>
            
-            <Task/>
-            <Task/>
-            <Task/>
-            <Task/>
-            <Task/>
-            <Task/>
-            <Task/>
         </main>
     </article>
   )

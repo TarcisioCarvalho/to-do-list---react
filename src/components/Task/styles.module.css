@@ -4,17 +4,19 @@
     color: var(--gray-300);
     width: 100%;
     justify-content: space-between;
+    align-items: center;
     padding: 1rem;
 }
 
 
 .inputCheck{
+ cursor: pointer;
  appearance: none;
  width: 1.5rem;
  height: 1.5rem;
  border-radius: 50%;
  outline: 1px solid var(--blue);
- transition: .2s;
+ transition: .1s;
 }
 
 .inputCheck:hover{
@@ -33,6 +35,11 @@
 
 .inputCheck:checked:hover{
     background-color: var(--purple);
+}
+
+.task p{
+   width: 100%;
+   padding-left: 12px;
 }
 
 .button{
