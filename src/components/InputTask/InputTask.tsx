@@ -15,7 +15,7 @@ const InputTask = () => {
   interface Task{
     id:string;
     taskText:string;
-    isCompleted:Boolean;
+    isCompleted:boolean;
   }
 
   const [tasks,setTasks] =  React.useState<Task[]>([]);
@@ -34,6 +34,14 @@ const InputTask = () => {
     setTasks(tasks.filter(task => task.id!==id))
   }
 
+  function handleChangeTaskState(id:string){
+      setTasks(tasks.map(task => task.id===id?{id:id
+        ,taskText:task.taskText,
+        isCompleted:!task.isCompleted
+      }:task))
+  }
+ 
+
   return (
     <>
    <form onSubmit={handleCreateNewTask} className={styles.form}>
@@ -50,7 +58,7 @@ const InputTask = () => {
             <PlusCircle size={16}/>
         </button>
    </form>
-   <Tasks onDeleteTask={handleDeleteTask} tasks = {tasks}/>
+   <Tasks onChangeTaskState={handleChangeTaskState} onDeleteTask={handleDeleteTask} tasks = {tasks}/>
    </>
   )
 }

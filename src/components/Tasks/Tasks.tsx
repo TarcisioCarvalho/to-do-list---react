@@ -8,16 +8,16 @@ import styles from './styles.module.css'
     tasks:{
       id:string,
       taskText:string,
-      isCompleted:Boolean
+      isCompleted:boolean
     }[];
     onDeleteTask:(id:string)=>void;
+    onChangeTaskState:(id:string)=>void;
   }
 
 
-const Tasks = ({onDeleteTask,tasks}:Tasks) => {
+const Tasks = ({onChangeTaskState,onDeleteTask,tasks}:Tasks) => {
 
  
-
   return (
     <article className={styles.tasks}>
         <header>
@@ -33,7 +33,7 @@ const Tasks = ({onDeleteTask,tasks}:Tasks) => {
               <p style={tasks.length!==0?{display:'none'}:{display:'block'}} >Crie tarefas e organize seus itens a fazer</p>
           
             
-            {tasks.map(task=> <Task onDeleteTask={onDeleteTask} key={task.id} task={task}/>)}
+            {tasks.map(task=> <Task onChangeTaskState={onChangeTaskState} onDeleteTask={onDeleteTask} key={task.id} task={task}/>)}
         </main>
     </article>
   )

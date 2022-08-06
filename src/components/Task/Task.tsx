@@ -7,12 +7,21 @@ interface Task{
   {
     id:string;
     taskText:string;
-    isCompleted:Boolean;
+    isCompleted:boolean;
   },
   onDeleteTask:(id:string)=>void;
+  onChangeTaskState:(id:string)=>void;
 }
 
-const Task = ({onDeleteTask,task}:Task) => {
+const Task = ({onChangeTaskState,onDeleteTask,task}:Task) => {
+
+
+  
+
+  function handleChangeTaskState(){
+    onChangeTaskState(task.id)
+  }
+
 
   function handleClick(){
     onDeleteTask(task.id);
@@ -22,9 +31,15 @@ const Task = ({onDeleteTask,task}:Task) => {
   return (
     <div  className={styles.task}>
         
-          <input className={styles.inputCheck} type="checkbox" />
+          <input className={styles.inputCheck}
+           type="checkbox" 
+           checked={task.isCompleted} 
+           onChange={handleChangeTaskState}
+           />
         
-        <p>{task.taskText}</p>
+        <p style={task.isCompleted?{textDecoration:'line-through'}:{textDecoration:'none'}}>
+          {task.taskText}
+        </p>
         <button onClick={handleClick} className={styles.button}>
           <Trash size={24}/>
         </button>
