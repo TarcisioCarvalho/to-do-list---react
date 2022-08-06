@@ -1,0 +1,14 @@
+.task{
+    border: 1px solid yellow;
+    background-color: var(--gray-500);
+    display: flex;
+    color: var(--gray-300);
+    width: 100%;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.inputCheck{
+    width: 50px;
+    border-radius: 50%;
+}
