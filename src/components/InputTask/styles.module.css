@@ -14,12 +14,10 @@
     display: flex;
     gap: 8px;
     height: 56px;
-    
 }
 
 
 .button{
-    
     display: flex;
     gap: .5rem;
     align-items: center;
@@ -29,7 +27,7 @@
     cursor: pointer;
     transition: .2s;
     border: none;
-   justify-content: center;
+    justify-content: center;
 }
 
 .button:hover{

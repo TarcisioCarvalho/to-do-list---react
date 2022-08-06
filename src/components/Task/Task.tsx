@@ -5,9 +5,13 @@ import styles from './styles.module.css'
 const Task = () => {
   return (
     <div className={styles.task}>
-        <input className={styles.inputCheck} type="checkbox" />
+        
+          <input className={styles.inputCheck} type="checkbox" />
+        
         <p>Tarefa</p>
-        <button><Trash/></button>
+        <button className={styles.button}>
+          <Trash size={24}/>
+        </button>
     </div>
   )
 }

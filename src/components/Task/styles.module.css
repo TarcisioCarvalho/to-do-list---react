@@ -1,5 +1,4 @@
 .task{
-    border: 1px solid yellow;
     background-color: var(--gray-500);
     display: flex;
     color: var(--gray-300);
@@ -8,7 +7,44 @@
     padding: 1rem;
 }
 
+
 .inputCheck{
-    width: 50px;
-    border-radius: 50%;
+ appearance: none;
+ width: 1.5rem;
+ height: 1.5rem;
+ border-radius: 50%;
+ outline: 1px solid var(--blue);
+ transition: .2s;
+}
+
+.inputCheck:hover{
+    opacity: .8;
+    outline: 1px solid var(--blue-dark);
+}
+
+.inputCheck:checked{
+    background-color: var(--purple-dark);
+    background-image: url('../../assets/img/checked.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    transition: .2s;
+}
+
+.inputCheck:checked:hover{
+    background-color: var(--purple);
+}
+
+.button{
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    color: var(--gray-300);
+    cursor: pointer;
+    transition: .2s;
+}
+
+.button:hover{
+    color: var(--danger);
+    background-color: var(--gray-400);
 }
