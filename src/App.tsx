@@ -12,8 +12,6 @@ function App() {
       <Header/>
       <main className={styles.main}>
         <InputTask/>
-        <Tasks/>
-     
       </main>
       
     </>

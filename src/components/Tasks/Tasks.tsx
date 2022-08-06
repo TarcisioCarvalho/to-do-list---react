@@ -3,18 +3,37 @@ import React from 'react'
 import Task from '../Task/Task'
 import styles from './styles.module.css'
 
-const Tasks = () => {
+
+  interface Tasks{
+    tasks:{
+      id:string,
+      taskText:string,
+      isCompleted:Boolean
+    }[];
+    onDeleteTask:(id:string)=>void;
+  }
+
+
+const Tasks = ({onDeleteTask,tasks}:Tasks) => {
+
+ 
+
   return (
     <article className={styles.tasks}>
         <header>
-            <p className={styles.blueParagraph}>Tarefas Criadas <span>0</span> </p>
-            <p className={styles.purpleParagraph}> <span>0</span> Tarefas Concluidas</p>
+            <p className={styles.blueParagraph}>Tarefas Criadas <span>{tasks.length}</span> </p>
+            <p className={styles.purpleParagraph}> <span>{
+              tasks.filter(task=>task.isCompleted===true).length
+              } de {tasks.length}</span> Tarefas Concluidas</p>
         </header>
         <main>
-            <ClipboardText size={56}  className={styles.clipboard}/>
-            <p className={styles.firstParahraph}>Você ainda não tem tarefas cadastradas</p>
-            <p>Crie tarefas e organize seus itens a fazer</p>
-           
+            
+              <ClipboardText style={tasks.length!==0?{display:'none'}:{display:'block'}}  size={56}  className={styles.clipboard}/>
+              <p style={tasks.length!==0?{display:'none'}:{display:'block'}}  className={styles.firstParahraph}>Você ainda não tem tarefas cadastradas</p>
+              <p style={tasks.length!==0?{display:'none'}:{display:'block'}} >Crie tarefas e organize seus itens a fazer</p>
+          
+            
+            {tasks.map(task=> <Task onDeleteTask={onDeleteTask} key={task.id} task={task}/>)}
         </main>
     </article>
   )
