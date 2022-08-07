@@ -30,7 +30,7 @@ Layout disponibilizado no Figma [Layout](https://www.figma.com/file/pIZMrU0MGMLe
 
 ## Layout
 
-<img  src = 'https://github.com/TarcisioCarvalho/adopet/blob/master/frontend/src/assets/img/telas/inicial-mobile.jpg' width='185px' height = '471px'>
+<img  src = 'https://github.com/TarcisioCarvalho/to-do-list---react/blob/main/src/assets/img/LayoutToDoList.jpg'>
 
 # Tecnologias utilizadas
 
