@@ -4,6 +4,7 @@ import Tasks from '../Tasks/Tasks';
 import styles from './styles.module.css'
 import {v4 as uuidv4} from 'uuid'
 
+
 const InputTask = () => {
 
   const [taskText,setTaskText] = React.useState('');
@@ -20,6 +21,20 @@ const InputTask = () => {
 
   const [tasks,setTasks] =  React.useState<Task[]>([]);
 
+  let tasksLocalStorage:Task[] = [];
+
+    if(window.localStorage.getItem('task'))
+    tasksLocalStorage = JSON.parse(window.localStorage.getItem('task')??"")
+    
+    React.useEffect(()=>{
+    if(tasksLocalStorage.length!==0) setTasks(tasksLocalStorage);
+    },[])
+
+
+
+
+ 
+
   function handleCreateNewTask(event:FormEvent<HTMLFormElement>){
       event.preventDefault();
       setTasks([...tasks,{
@@ -28,10 +43,23 @@ const InputTask = () => {
         isCompleted:false,
       }]);
       setTaskText('');
+
+      localStorage.setItem(
+        'task',
+        JSON.stringify([...tasks,{
+        id: uuidv4(),
+        taskText:taskText,
+        isCompleted:false,
+      }])
+      )
   }
 
   function handleDeleteTask(id:string){
     setTasks(tasks.filter(task => task.id!==id))
+    localStorage.setItem(
+      'task',
+      JSON.stringify(tasks.filter(task => task.id!==id))
+      )
   }
 
   function handleChangeTaskState(id:string){
@@ -39,6 +67,15 @@ const InputTask = () => {
         ,taskText:task.taskText,
         isCompleted:!task.isCompleted
       }:task))
+
+      localStorage.setItem(
+        'task',
+        JSON.stringify(tasks.map(task => task.id===id?{id:id
+          ,taskText:task.taskText,
+          isCompleted:!task.isCompleted
+        }:task))
+        )
+
   }
  
 
